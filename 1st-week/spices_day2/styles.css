@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+}
+header {
+    height: 40px;
+    margin: 20px 20px;
+}
+.logo {
+    float: left;
+    height: 35px;
+}
+.menu {
+    float: right;
+    height: 35px;
+}
+.container {
+    position: relative;
+}
+.image {
+    width: 100vw;
+    height: 55vh;
+    filter: brightness(80%);
+}
+h3 {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    color: #fff;
+    font-size: 50px;
+    font-style: italic;
+}
+span {
+    text-transform: uppercase;
+}
+.btn {
+    padding: 5px 60px;
+    font-size: 25px;
+    border: 3px solid orange;
+    border-radius: 25px;
+    background: rgb(253, 225, 165);
+    color: rgb(255, 139, 7);
+    position: absolute;
+    top: 53%;
+    left: 40%;
+}
+.about {
+    background-color: lightgray;
+    height: 40vh;
+}
+footer {
+    height: 5vh;
+    background-color: gray;
+}
