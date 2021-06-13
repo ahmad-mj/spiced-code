@@ -1,15 +1,38 @@
 console.log("my script day5 is linked");
 
-function invertCase(str) {
-    var string = "Can you";
+function Rectangle(width, height) {
+    this.width = width;
+    this.height = height;
+}
 
-    for (var i = 0; i < str.length; i++) {
-        var newStr = str[i];
-        if (str[i] === newStr.toUpperCase()) {
-            string += newStr.toLowerCase();
+Rectangle.prototype.getArea = function () {
+    return this.width * this.height;
+};
+
+function Square(size) {
+    this.width = size;
+    this.height = size;
+}
+Square.prototype.getArea = function () {
+    return this.width * this.height;
+};
+
+Square.prototype = new Rectangle();
+var square = new Square(4);
+square.getArea(); //16
+
+var rect = new Rectangle(4, 5);
+rect.getArea(); //20
+
+function invertCase(str) {
+    var string = " ";
+    for (var character of str) {
+        if (character === character.toUpperCase()) {
+            string += character.toLowerCase();
         } else {
-            string += newStr.toUpperCase();
+            string += character.toUpperCase();
         }
     }
     return string;
 }
+invertCase("i'm small & I'M BIG");
