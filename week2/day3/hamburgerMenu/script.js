@@ -1,14 +1,15 @@
 (function () {
-    var overlay = document.getElementsByClassName("overlay-menu");
-    var openMenu = document.getElementsByClassName("on_menu");
-    var closeMenu = document.getElementsByClassName("x_menu");
+    var overlay = document.getElementById("overlayMenu");
+    var openMenu = document.getElementById("menu");
+    var closeMenu = document.getElementById("x_menu");
 
     openMenu.addEventListener("click", function () {
-        overlay.classList.add("menu_js");
         console.log("clicked on menu");
+        overlay.classList.add("menu_js");
     });
 
     closeMenu.addEventListener("click", function () {
+        console.log("clicked on x");
         overlay.classList.remove("menu_js");
     });
 })();
