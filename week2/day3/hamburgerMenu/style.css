@@ -9,7 +9,7 @@ html.hamburger {
 body {
     margin: 0;
     font-family: Georgia;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0);
 }
 header {
     height: 70px;
@@ -123,13 +123,11 @@ footer {
     z-index: 10000;
     padding: 60px 10% 0 20px;
     visibility: hidden;
-    transition: 0.4s;
 }
 .side-nav {
     height: 100%;
     width: 100%;
     visibility: hidden;
-    transition: 0.4s;
 }
 .side-nav div {
     padding: 10px;
@@ -156,9 +154,6 @@ footer {
 }
 .menu_js {
     visibility: visible;
-    transition: transform;
-    transition-duration: 0.4s;
-    transform: perspective(100%);
 }
 
 @media (max-width: 500px) {
