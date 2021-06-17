@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 100vh;
+    background: antiquewhite;
+}
+header {
+    background: red;
+    height: 70px;
+}
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+}
+
+footer {
+    background: darkblue;
+    height: 30px;
+}

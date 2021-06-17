@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    background: antiquewhite;
+    height: 50vh;
+}
+.outerBox {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+}
+.one {
+    background: gray;
+    justify-content: flex-end;
+}
+
+.two {
+    background: black;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.three {
+    background: blue;
+    align-items: flex-end;
+}
+
+.four {
+    background: blueviolet;
+}
+
+.innerbox {
+    width: 50%;
+    height: 50%;
+}
+
+.inn1 {
+    background: orange;
+}
+
+.inn2 {
+    background: yellow;
+}
+
+.inn3 {
+    background: green;
+}
+
+.inn4 {
+    background: palevioletred;
+}
