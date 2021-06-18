@@ -1,0 +1,48 @@
+.container {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(1, 200px);
+    grid-auto-rows: 200px;
+    gap: 5px;
+}
+
+.container :nth-child(1) {
+    background-color: gray;
+}
+.container :nth-child(2) {
+    background-color: black;
+}
+.container :nth-child(3) {
+    background-color: darkblue;
+}
+.container :nth-child(4) {
+    background-color: purple;
+}
+.outerBox {
+    display: grid;
+}
+
+.innerBox {
+    width: 50%;
+    height: 50%;
+}
+
+.innerBox.one {
+    background-color: orange;
+    justify-self: end;
+}
+
+.innerBox.two {
+    background-color: yellow;
+    justify-self: end;
+    align-self: end;
+}
+
+.innerBox.three {
+    background-color: forestgreen;
+    align-self: end;
+}
+.innerBox.four {
+    background-color: plum;
+}
