@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+}
+
+#kitties {
+    position: relative;
+    height: 600px;
+}
+
+#kitties img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#kitties img.onscreen {
+    transform: translateX(0);
+    transition-property: "transform";
+    transition-duration: 1s;
+}
+
+#kitties img.exit {
+    transform: translateX(-100%);
+    transition-property: "transform";
+    transition-duration: 1s;
+}
