@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+}
+
+html.hamburger {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia;
+    background-color: rgba(0, 0, 0, 0);
+}
+header {
+    height: 70px;
+    padding: 20px 40px;
+}
+
+header img {
+    margin: -5px 0 0 -5px;
+    height: 40px;
+}
+
+header #menu {
+    float: right;
+}
+
+header #menu img {
+    margin: 0;
+    height: 30px;
+}
+
+#splash {
+    position: relative;
+}
+
+#splash img {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+#splash .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+#splash .message {
+    color: #fff;
+    font-size: 36px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    font-style: italic;
+    transform: translateY(-50%);
+    padding: 0 40px;
+}
+
+#get-started {
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 30px;
+    border: 3px #c60 solid;
+    background: #fc3;
+    color: #333;
+    width: 250px;
+    line-height: 40px;
+    font-size: 26px;
+    color: #c60;
+    font-style: normal;
+}
+
+#benefits {
+    padding: 40px;
+    text-align: center;
+    color: color(black darkness(50%));
+}
+
+.benefit {
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    padding: 0 20px 0 70px;
+    width: 45%;
+    vertical-align: top;
+    margin-bottom: 30px;
+}
+
+.benefit h4 {
+    margin: 0;
+}
+
+.benefit .icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 40px;
+}
+
+footer {
+    padding: 10px 40px;
+    color: #eee;
+    background: #666;
+    font-size: 12px;
+}
+
+@media (max-width: 500px) {
+    header {
+        height: 70px;
+        padding: 20px;
+    }
+
+    #splash .message {
+        font-size: 20px;
+        transform: none;
+        top: 0;
+        margin-top: 50px;
+    }
+
+    #get-started {
+        margin-top: 20px;
+        width: 250px;
+        line-height: 30px;
+        font-size: 16px;
+        width: 150px;
+    }
+
+    .benefit {
+        width: auto;
+        display: block;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body,
+    #benefits {
+        background-color: #333333;
+        color: white;
+    }
+
+    #get-started {
+        background-color: #333333;
+    }
+
+    #splash .overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+/* Hamburger Menu */
+.overlay-menu {
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    padding: 60px 10% 0 20px;
+    visibility: hidden;
+    transition-property: transform;
+    transition-duration: 2s;
+    transform: translateX(100%);
+}
+.side-nav {
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+}
+.side-nav div {
+    padding: 10px;
+    font-size: 1.2em;
+}
+.side-nav a {
+    text-decoration: none;
+}
+#x_menu {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 25px;
+    cursor: pointer;
+}
+.side-nav p:active {
+    color: red;
+}
+
+.logout {
+    font-size: 14px;
+}
+.menu_js {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Modal dialog */
+#modalBox {
+    /* position: absolute;
+
+    top: 45%;
+    right: 30%;
+    background-color: white;
+    width: 480px;
+    height: 180px;
+    display: flex;
+    z-index: 99999;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    padding-left: 20px; */
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+    visibility: visible;
+}
+#modalBox_overlay {
+    background-color: white;
+    position: fixed;
+    top: 40%;
+    height: 200px;
+    width: 450px;
+    z-index: 99999;
+    border-radius: 10px;
+}
+#modalBox_content {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.x {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: pointer;
+}
+.x:active {
+    color: red;
+}
