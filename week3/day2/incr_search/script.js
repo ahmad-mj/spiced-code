@@ -1,4 +1,5 @@
 (function (countries) {
+    // 1.input event
     var searchInput = $("input");
     var resultsContainer = $(".results_container");
 
@@ -45,6 +46,51 @@
             resultsContainer.html(htmlForCountries);
         }
     });
+    // 2.mouseover event
+    $(".results_container")
+        .mouseover(function (e) {
+            $(e.target).addClass("highlight");
+            $(".results_container").removeClass("highlight");
+            e.stopPropagation();
+            // console.log("mouseover");
+        })
+        .mouseout(function (e) {
+            e.stopPropagation();
+            $(e.target).removeClass("highlight");
+            $(".results_container").removeClass("highlight");
+
+            // console.log("mouseout");
+        });
+
+    // $(".results_container").on("mouseout", "mouseover", "p", function (e) {
+    //     console.log("delegation");
+    //     e.preventDefault();
+    // });
+
+    // 3.mousedown event
+
+    resultsContainer.click(function (e) {
+        // console.log("clicking is working");
+        var choice = $(e.target).html();
+        if (searchInput.val(choice)) {
+            resultsContainer.hide();
+        } //else if (e.target.innerHTML !== "no result!");
+    });
+
+    $("body").keydown(function (e) {
+        if (e.keyCode == 40) {
+            console.log("Down arrow key hit.");
+            $(".country").addClass("highlight");
+        }
+    });
+    // $("body").keyup(function (e) {
+
+    //     if (e.keyCode == 38) {
+    //         console.log("Up arrow key hit.");
+    //         $(".country").addClass("highlight");
+
+    //     }
+    // });
 })([
     "Afghanistan",
     "Albania",
