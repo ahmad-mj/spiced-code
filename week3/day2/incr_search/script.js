@@ -13,6 +13,8 @@
             // IF the input fiels is empty don't show any results
             console.log("the input field is empty don't show any results");
             resultsContainer.hide();
+        } else {
+            resultsContainer.show();
         }
 
         for (var i = 0; i < countries.length; i++) {
@@ -25,6 +27,7 @@
                     // console.log("no more than four");
                     break;
                 }
+                console.log(matches);
             }
         }
 
