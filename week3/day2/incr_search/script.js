@@ -77,12 +77,19 @@
         } //else if (e.target.innerHTML !== "no result!");
     });
 
-    $("body").keydown(function (e) {
-        if (e.keyCode == 40) {
-            console.log("Down arrow key hit.");
-            $(".country").addClass("highlight");
-        }
-    });
+    // $("body").keydown(function (e) {
+    //     var country = $(".country");
+    //     if (e.keyCode == 40) {
+    //         console.log("Down arrow key hit.");
+    //         $(".country").addClass("highlight");
+    //     }
+    //     for (var i = 0; i < country.length; i++) {
+    //         if (country.eq(i).hasClass("highlight")) {
+    //             country.eq(i).removeClass("highlight");
+    //             country.eq(i).next().addClass("highlight");
+    //         }
+    //     }
+    // });
     // $("body").keyup(function (e) {
 
     //     if (e.keyCode == 38) {
@@ -91,6 +98,17 @@
 
     //     }
     // });
+
+    searchInput.focus(function () {
+        console.log("focusing");
+        resultsContainer.removeClass("highlight");
+        resultsContainer.show();
+    });
+    searchInput.blur(function () {
+        console.log("blurring");
+        resultsContainer.removeClass("highlight");
+        resultsContainer.hide();
+    });
 })([
     "Afghanistan",
     "Albania",
