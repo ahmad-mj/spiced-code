@@ -1,9 +1,7 @@
 $.ajax({
     url: "/data.json",
     method: "GET",
-    data: {
-        limit: 20,
-    },
+
     success: function (data) {
         console.log("data: ", data);
         var htmlStr = "";
