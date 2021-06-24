@@ -6,8 +6,8 @@ $.ajax({
         console.log("data: ", data);
         var htmlStr = "";
         for (var i = 0; i < data.length; i++) {
-            console.log("data.text[i]: ", data.text[i]);
-            htmlStr += "<a>" + data.text[i] + "</a>";
+            console.log("data.text[i]: ", data[i]);
+            htmlStr += "<a>" + data[i] + "</a>";
         }
         console.log("htmlStr: ", htmlStr);
         $("#headlines").html(htmlStr);
