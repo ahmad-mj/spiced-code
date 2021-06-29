@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Handlebars Fun 🐶</title>
+    </head>
+
+    <body>
+        <div class="authors-info"></div>
+        <script id="authorsId" type="text/x-handlebars-template">
+            {{#authors}}
+
+                        <div class="container">
+                            <div class="card">
+                                <div><img src="{{photo}}" /></div>
+
+                                <h2>{{name}}</h2>
+                            <div class="born_died">
+                                <p>born: {{born}}</p>
+                                <p>died: {{died}}</p>
+                            </div>
+
+                                <div class="values">
+                                    <q>{{quote}}</q>
+                                    <ul>
+                                    selectedWritings:
+                                     {{#selectedWritings}}
+                                                <li>{{.}}</li>
+
+                                            {{/selectedWritings}}
+                                </ul>
+                                </div>
+
+
+
+                            </div>
+                            </div>
+                        </div>
+            {{/authors}}
+
+
+                        <!-- {{#authors}}
+                            <div class="container">
+                                <div class="card">
+                                    <img src="{{photo}}" />
+                                    <h2>{{name}} </h2>
+
+                                    <section>
+                                        <div class="properties"><q> {{quote}} </q></div>
+                                        <div class="values">
+                                            <p>born: {{born}}</p>
+                                            <p>died: {{died}}</p>
+
+                                        </div>
+                                    </section>
+
+                                    <section>
+                                        <div class="properties">selectedWritings:</div>
+                                        <div class="values">
+                                            <ul>
+                                                {{#selectedWritings}}
+                                                <li>{{.}}</li>
+
+                                            {{/selectedWritings}}
+                                        </ul>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        {{/authors}} -->
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
