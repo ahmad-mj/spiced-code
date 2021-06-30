@@ -1,157 +1,93 @@
 (function () {
-    $("#go").click(function () {
-        // console.log("go button was clickd");
+    var nextUrl;
+    var spotifyApiUrl = "https://spicedify.herokuapp.com/spotify";
+    function setNextUrl(next) {
+        nextUrl =
+            next &&
+            next.replace("https://api.spotify.com/v1/search", spotifyApiUrl);
+    }
+    function generateResultsHtml(items) {
+        var myHtml = "";
+        var imageUrl = "/default.jpg";
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].images.length > 0) {
+                imageUrl = items[i].images[0].url;
+            }
+            myHtml +=
+                "<a target='_blank' href=" +
+                items[i].external_urls.spotify +
+                ">" +
+                "<img src = " +
+                imageUrl +
+                " >" +
+                "<p> " +
+                items[i].name +
+                "</p>" +
+                "</a>";
+            // there is a bug No results found for is not showing!!
+            var resultFor = "";
+            if (items.length > 0) {
+                resultFor += '<h2>Results for: "' + $("input").val() + '"</h2>';
+            } else {
+                resultFor +=
+                    '<h2>No results found for: "' + $("input").val() + '"</h2>';
+            }
+        }
+        $("#resultsForText").html(resultFor);
+        return myHtml;
+    }
 
-        var userInput = $("input").val(); // val(); here is a geter to get whatever the user type in the input field
-        // console.log("userInput: ", userInput);
-        var albumOrArtist = $("select").val(); // to tell me whether the user select album or artist
-        // console.log("albumOrArtist: ", albumOrArtist);
+    $(document).on("click", "#go, #more_btn", function (e) {
+        var goGotClicked = e.target.id === "go";
+        var data;
+        var url = spotifyApiUrl;
 
+        if (goGotClicked) {
+            data = {
+                query: $("input").val(),
+                type: $("select").val(),
+            };
+        } else {
+            url = nextUrl;
+        }
         $.ajax({
-            url: "https://spicedify.herokuapp.com/spotify",
+            url: url,
             method: "GET",
-            data: {
-                query: userInput,
-                type: albumOrArtist,
-            },
+            data: data,
             success: function (response) {
-                response = response.artists || response.albums;
-                console.log("response: ", response);
-                var myHtml = ""; // = "" so it does not show me undefinde
-                for (var i = 0; i < response.items.length; i++) {
-                    // console.log(response.items[i].name);
-
-                    var imageUrl = "/default.jpg";
-                    if (response.items[i].images[0]) {
-                        imageUrl = response.items[i].images[0].url;
-                    }
-
-                    myHtml +=
-                        "<a target='_blank' href=" +
-                        response.items[i].external_urls.spotify +
-                        ">" +
-                        "<img src = " +
-                        imageUrl +
-                        " >" +
-                        "<p> " +
-                        response.items[i].name +
-                        "</p>" +
-                        "</a>";
-
-                    // there is a bug No results found for is not showing!!
-                    var resultFor = "";
-
-                    if (response.items.length > 0) {
-                        resultFor +=
-                            '<h2>Results for: "' + $("input").val() + '"</h2>';
-                    } else {
-                        resultFor +=
-                            '<h2>No results found for: "' +
-                            $("input").val() +
-                            '"</h2>';
-                    }
-                    console.log("no result", resultFor);
-                }
-                $("#resultsForText").html(resultFor);
-
-                // console.log("myHtml:", myHtml);
-                $("#results-container").html(myHtml);
-                // console.log("orginal url: ", response.next);
-
-                var nextUrl =
-                    response.next &&
-                    response.next.replace(
-                        "api.spotify.com/v1/search",
-                        "spicedify.herokuapp.com/spotify"
+                response = response.albums || response.artists;
+                var html = generateResultsHtml(response.items);
+                if (goGotClicked) {
+                    $("#results-container").html(html);
+                } else {
+                    $("#results-container").append(
+                        generateResultsHtml(response.items)
                     );
+                }
+                setNextUrl(response.next);
+                // IF nextUrl has value, make more button appear
                 var moreButton = $("#more_btn ");
-
-                if (response.next) {
-                    nextUrl =
-                        response.next &&
-                        response.next.replace(
-                            "api.spotify.com/v1/search",
-                            "spicedify.herokuapp.com/spotify"
-                        );
-
-                    moreButton.click(function () {
-                        console.log("clicking");
-                        $.ajax({
-                            url: nextUrl,
-                            method: "GET",
-                            data: {
-                                query: userInput,
-                                type: albumOrArtist,
-                            },
-                            success: function (response) {
-                                response = response.artists || response.albums;
-                                console.log("response: ", response);
-                                var myHtml = ""; // = "" so it does not show me undefinde
-                                for (
-                                    var i = 0;
-                                    i < response.items.length;
-                                    i++
-                                ) {
-                                    // console.log(response.items[i].name);
-
-                                    var imageUrl = "/default.jpg";
-                                    if (response.items[i].images[0]) {
-                                        imageUrl =
-                                            response.items[i].images[0].url;
-                                    }
-
-                                    myHtml +=
-                                        "<a target='_blank' href=" +
-                                        response.items[i].external_urls
-                                            .spotify +
-                                        ">" +
-                                        "<img src = " +
-                                        imageUrl +
-                                        " >" +
-                                        "<p> " +
-                                        response.items[i].name +
-                                        "</p>" +
-                                        "</a>";
-                                    // there is a bug No results found for is not showing!!
-                                    var resultFor = "";
-
-                                    if (response.items.length > 0) {
-                                        resultFor +=
-                                            '<h2>Results for: "' +
-                                            $("input").val() +
-                                            '"</h2>';
-                                    } else if (response.items.length >= null) {
-                                        resultFor +=
-                                            '<h2>No results found for: "' +
-                                            $("input").val() +
-                                            '"</h2>';
-                                    }
-                                    // console.log("no result", resultFor);
-                                }
-                                $("#resultsForText").html(resultFor);
-                                // console.log("myHtml:", myHtml);
-                                $("#results-container").html(myHtml);
-                                // console.log("orginal url: ", response.next);
-
-                                var nextUrl =
-                                    response.next &&
-                                    response.next.replace(
-                                        "api.spotify.com/v1/search",
-                                        "spicedify.herokuapp.com/spotify"
-                                    );
-                            },
-                        });
-                    });
-                    var moreButton = $("#more_btn ");
-                    if (response.next === null) {
-                        moreButton.css({ visibility: "hidden" });
-                        // console.log("moreButton should not be visible", moreButton);
-                    } else if (response.next !== null) {
-                        moreButton.css({ visibility: "visible" });
-                        // moreButton.css({ visibility: "visible" });
-                    }
-                } //else moreButton.css({ visibility: "hidden" }); // maybe i schould add visibilty:hidden here??
+                if (response.next === null) {
+                    moreButton.css({ visibility: "hidden" });
+                    // console.log("moreButton should not be visible", moreButton);
+                } else if (response.next !== null) {
+                    moreButton.css({ visibility: "visible" });
+                    // moreButton.css({ visibility: "visible" });
+                }
             },
         });
+        // function infinteScroll() {
+        //     var entireHeight = $(document).height();
+        //     var windowHeight = $(window).height();
+        //     var scrollTop = $(document).scrollTop();
+
+        //     var userReachedTheBottom = windowHeight + scrollTop;
+        //     console.log("userReachedTheBottom", userReachedTheBottom);
+
+        //     console.log("show entireHeight", entireHeight);
+        //     if (userReachedTheBottom != entireHeight) {
+        //         setTimeout(infinteScroll, 3000);
+        //     } else return;
+        // }
     });
 })();
