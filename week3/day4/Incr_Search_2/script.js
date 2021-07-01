@@ -77,38 +77,37 @@
         } //else if (e.target.innerHTML !== "no result!");
     });
 
-    // $("body").keydown(function (e) {
-    //     var country = $(".country");
-    //     if (e.keyCode == 40) {
-    //         console.log("Down arrow key hit.");
-    //         $(".country").addClass("highlight");
-    //     }
-    //     for (var i = 0; i < country.length; i++) {
-    //         if (country.eq(i).hasClass("highlight")) {
-    //             country.eq(i).removeClass("highlight");
-    //             country.eq(i).next().addClass("highlight");
-    //         }
-    //     }
-    // });
-    // $("body").keyup(function (e) {
+    $(document).keydown(function (e) {
+        var country = $(".country");
+        if (e.keyCode == 40) {
+            console.log("Down arrow key hit.");
+            country.addClass("highlight");
+        }
+        for (var i = 0; i < country.length; i++) {
+            if (country.eq(i).hasClass("highlight")) {
+                country.eq(i).next().addClass("highlight");
+            }
+        }
 
-    //     if (e.keyCode == 38) {
-    //         console.log("Up arrow key hit.");
-    //         $(".country").addClass("highlight");
+        if (e.keyCode == 38) {
+            if (country.eq(i).hasClass("highlight")) {
+                country.eq(i).next().addClass("highlight");
 
-    //     }
-    // });
-
-    searchInput.focus(function () {
-        console.log("focusing");
-
-        resultsContainer.show();
+                console.log("Up arrow key hit.");
+            }
+        }
     });
-    searchInput.blur(function () {
-        console.log("blurring");
 
-        resultsContainer.hide();
-    });
+    // searchInput.focus(function () {
+    //     console.log("focusing");
+
+    //     resultsContainer.show();
+    // });
+    // searchInput.blur(function () {
+    //     console.log("blurring");
+
+    //     resultsContainer.hide();
+    // });
 })([
     "Afghanistan",
     "Albania",

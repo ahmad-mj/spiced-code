@@ -68,9 +68,12 @@ img {
     display: flex;
     justify-content: center;
 }
+
+/* update this in script and css to class hide_btn */
 #more_btn {
     visibility: hidden;
 }
+
 h2 {
     display: inline-block;
     font-size: 2rem;
