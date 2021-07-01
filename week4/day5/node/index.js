@@ -1,36 +1,3 @@
-// console.log("great job! this work");
-// const chalk = require("chalk");
-// const readline = require("readline");
-
-// const gameInterface = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-// });
-
-// const conversation = {
-//     question: "wanna play?",
-//     answer: {
-//         yes: "yuupie",
-//         no: "sad",
-//     },
-// };
-
-// function playGame(story) {
-//     gameInterface.question(story.question, (answer) => {
-//         if (story.answer[answer]) {
-//             console.log(chalk.bgCyan.red(story.answer[answer]));
-//         } else {
-//             console.log("Pardon?");
-//             return playGame(story);
-//         }
-//         gameInterface.close(); // this will end the interface in the terminal
-//     });
-// }
-
-// playGame(conversation);
-
-/////////////////////////////////////////////////
-
 const readline = require("readline");
 const chalk = require("chalk");
 console.log(chalk.bgCyan.red("Hello Ahmad"));
