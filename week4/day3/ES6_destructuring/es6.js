@@ -22,4 +22,15 @@ arr2;
 //[6, 7, 8, 9, 10];
 
 //Exercise3
-// const logInfo = ({}) => {};
+const logInfo = ({ name, country, population: numPeople }) => {
+    console.log(
+        `${name} is in ${country} and has ${numPeople} inhabitants in it.`
+    );
+};
+logInfo({ name: "Marseille", country: "France", population: 861635 });
+
+//Exercise4
+// var getNameAndCountry = function(city) {
+//     return [city.name, city.country];
+// };
+//  var getRelocatedCity = function(){}
