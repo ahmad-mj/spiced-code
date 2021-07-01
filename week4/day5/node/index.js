@@ -67,25 +67,19 @@ function playGame(story) {
             console.log(chalk.bgCyan.red("Please Cooperate!"));
             return playGame(story);
         } else {
-            if (story.answers[answer]) {
+            if (answer === "no") {
                 console.log(chalk.bgRed.yellow(story.answers[answer]));
+                console.log("answer is : ", answer);
                 gameInterface.close();
                 //if the answer the user types corresponds to a string
                 // - console.log() the string
                 // - end the game
             } else {
-                gameInterface.question(answer, function (story) {
-                    if (
-                        answer === "yes" ||
-                        answer === "left" ||
-                        answer === "right"
-                    ) {
-                        console.log(
-                            chalk.bgMagenta.yellow(story.answers[answer])
-                        );
-                    }
-                    return;
-                });
+                if (story.answers[answer].question) {
+                    chalk.bgGreen.black(story.answers[answer]);
+                    playGame(story.answers[answer]);
+                    gameInterface.close();
+                }
 
                 // if the answer the user types corresponds to an object
                 // play the substory associated with that answer (recursion! 👀)
