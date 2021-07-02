@@ -37,7 +37,9 @@ function playGame(story) {
             if (typeof story.answers[answer] === "string") {
                 console.log(chalk.bgYellow.blue(story.answers[answer]));
                 gameInterface.close();
-            } else playGame(story.answers[answer]);
+            } else {
+                playGame(story.answers[answer]);
+            }
         }
     });
 }
