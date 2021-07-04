@@ -31,11 +31,23 @@ const myPath = __dirname;
 // logSizes(myPath);
 
 //Part 2
-function mapSizes(myPath) {
-    const results = fs.readdirSync(myPath, { withFileTypes: true });
-    console.log("results: ", results);
-    const obj = {};
-    fs.writeFileSync(`${myPath}/info.json`, JSON.stringify(obj));
-    fs.writeFileSync(`${myPath}/info.json`, JSON.stringify(obj, null, 4));
+function mapSizes(fullPath) {
+    const data = fs.readdirSync(fullPath, { withFileTypes: true });
+    console.log("data: ", data);
+    var obj = {};
+    for (let i = 0; i < data.length; i++) {
+        console.log("data[i]: ", data[i]);
+        if (data[i].isFile) {
+            const statSize = fs.statSync(`${myPath}/${data[i].name}`).size;
+            obj[data[i].name] = statSize;
+        }
+        if (data[i].isDirectory) {
+            obj[data[i].name] = mapSizes(myPath);
+            let myPath = fullPath + "/" + data[i].name;
+        }
+        fs.writeFileSync(`${myPath}/info.json`, JSON.stringify(obj));
+        fs.writeFileSync(`${myPath}/info.json`, JSON.stringify(obj, null, 4));
+    }
+    return obj;
 }
-mapSizes(myPath);
+mapSizes();
