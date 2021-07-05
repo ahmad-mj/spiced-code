@@ -13,12 +13,10 @@ const server = http.createServer((req, res) => {
         res.end(`<h1>${err}</h1>`);
     });
     fs.appendFile(
-        "/requests.txt",
-        `Date:${new Date()}\t,
-        req.method: ${req.method}\t,
-        req.URL: ${req.url}\t,
-        req.header: ${req.headers}\t,       
-        `,
+        "requests.txt",
+        `Date:${new Date()}\t,${req.method}\t,${req.url}\t,${
+            req.headers["user-agent"]
+        }\n`,
         (err) => {
             if (err) {
                 console.log("There was an error");
