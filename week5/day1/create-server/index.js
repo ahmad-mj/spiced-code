@@ -47,7 +47,7 @@ const server = http.createServer((req, res) => {
         res.end();
     } else if (req.method === "POST") {
         let body = "";
-        req.on("body", (chunk) => {
+        req.on("data", (chunk) => {
             console.log("chunk: ", chunk);
             body += chunk; // puting stuff back together
         });
