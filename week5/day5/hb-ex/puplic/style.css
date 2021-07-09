@@ -1,0 +1,143 @@
+/* body {
+    background-color: darkcyan;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+}
+
+.nav_title {
+    padding: 20px;
+    font-size: 25px;
+    color: coral;
+}
+
+#home_img {
+    object-fit: cover;
+    width: 400px;
+    height: 400px;
+    padding: 50px;
+}
+#desc_img {
+    display: flex;
+    justify-content: center;
+}
+.desc_img {
+    object-fit: cover;
+    width: 100vh;
+    height: 60vh;
+    justify-self: center;
+}
+#decr_section {
+    display: flex;
+    flex-direction: column;
+}
+.decr_text {
+    display: flex;
+    justify-content: center;
+    color: ghostwhite;
+    font-size: 20px;
+    font-family: fantasy;
+    margin: 10px;
+}
+.title {
+    text-align: center;
+    color: ghostwhite;
+    font-size: 25px;
+    font-family: fantasy;
+    margin: 20px;
+    text-decoration: none;
+}
+
+.title:hover {
+    color: red;
+}
+button {
+    padding: 10px;
+    font: 20px;
+    text-transform: uppercase;
+    background-color: blueviolet;
+    cursor: pointer;
+} */
+body {
+    background: repeating-linear-gradient(45deg, gray, transparent 55px);
+    font-family: fantasy;
+}
+p {
+    font-size: 18px;
+    line-height: 25px;
+    color: blue;
+}
+
+h4 {
+    text-decoration-line: underline;
+}
+.active {
+    color: aliceblue;
+    font-weight: bold;
+}
+
+.welcome {
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.welcome a {
+    text-decoration: none;
+}
+.welcome img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.descr_container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 20px;
+}
+.nav_title {
+    font-size: 25px;
+    color: blue;
+}
+
+#descr_navbar {
+    height: 100%;
+    width: 100%;
+    text-transform: uppercase;
+}
+button {
+    text-transform: uppercase;
+    color: red;
+    cursor: pointer;
+}
+button:hover {
+    background-color: blueviolet;
+    color: whitesmoke;
+}
+#desc_info {
+    margin-top: 20px;
+}
+a.title {
+    text-decoration: none;
+    font-size: 20px;
+    color: red;
+}
+
+#desc_info img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    margin-top: 25px;
+}

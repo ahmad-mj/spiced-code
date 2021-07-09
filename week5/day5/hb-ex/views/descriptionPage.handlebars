@@ -1,0 +1,36 @@
+
+<div class="descr_container">
+  <div id="descr_navbar">
+     <h2>My Projects</h2>
+      {{>nav}}
+  </div>
+
+  {{#selectedProject}}
+  <div id= "desc_info">
+    <a class="title" href="/{{directory}}" target="_blank">GO TO PROJECT</a>
+    
+        {{!-- <a href="/{{directory}}" target="_blank">
+        <img
+                id= "desc_img"
+                src="/{{directory}}/img.png"
+                alt="png"
+            />
+        </a> --}}
+        <div >
+         <img
+                src="/{{directory}}/img.png"
+                alt="png"
+            />
+            </div>
+            <p class="decr_text">{{description}}</p>
+    {{/selectedProject}}
+
+    <a style="justify-content: flex-start" href="/"> <button>back to main page ↩️</button> </a>
+    
+
+    </div>
+</div>
+           
+                
+            
+       

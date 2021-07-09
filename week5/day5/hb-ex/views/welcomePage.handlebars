@@ -1,0 +1,14 @@
+{{!-- {{> nav}}  --}}
+
+<div class="welcome">
+    <h1>Welcome to my portofolio using express-handlebars</h1>
+    {{#projects}}
+        <a href="/project/{{directory}}"><img
+                src="/{{directory}}/img.png"
+                alt="png"
+            />
+            <h4>{{title}}</h4>
+        </a>
+
+    {{/projects}}
+</div>
