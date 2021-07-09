@@ -1,0 +1,85 @@
+* {
+}
+body {
+    background: url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80"),
+        black;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(45deg, #2241a7, transparent);
+}
+a:hover {
+    color: tomato;
+}
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    transform: translate(0, 200px);
+    background: linear-gradient(to top, #000000, #040604, #f44040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+input {
+    font-size: 24px;
+    font-family: cursive;
+    padding: 14px 40px;
+}
+.input {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    margin-top: 200px;
+}
+select,
+button {
+    color: #fff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    background-color: DodgerBlue;
+    margin: 10px;
+    font-size: 24px;
+    font-family: cursive;
+}
+/* button {
+    margin-left: 10px;
+} */
+button:hover {
+    background-color: yellowgreen;
+}
+
+img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+.btn_div {
+    display: flex;
+    justify-content: center;
+}
+
+/* update this in script and css to class hide_btn */
+#more_btn {
+    visibility: hidden;
+}
+
+h2 {
+    display: inline-block;
+    font-size: 2rem;
+    color: #fff;
+    margin-top: 10px;
+    position: absolute;
+    top: 350px;
+    left: 260px;
+}

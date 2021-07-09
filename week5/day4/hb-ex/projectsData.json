@@ -1,0 +1,19 @@
+[
+    {
+        "title": "Connect 4",
+        "directory": "connectfour"
+    },
+    {
+        "title": "JSON Validator",
+        "directory": "try_catch"
+    },
+    {
+        "title": "Spicedfy",
+        "directory": "spotify"
+    },
+
+    {
+        "title": "Incremental Search",
+        "directory": "Incr-Search"
+    }
+]

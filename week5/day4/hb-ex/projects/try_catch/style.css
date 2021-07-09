@@ -1,0 +1,22 @@
+body {
+    background-color: antiquewhite;
+}
+div {
+    display: flex;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+textarea {
+    border: 4px darkblue solid;
+}
+button {
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid darkorange;
+    font-size: xx-large;
+    color: aliceblue;
+    cursor: pointer;
+    background: linear-gradient(33deg, rgb(200, 5, 5), purple);
+}
