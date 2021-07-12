@@ -48,22 +48,6 @@ app.get("/", (req, res) => {
     });
 });
 
-// app.get("/project/:project", (req, res) => {
-//     console.log("this is a get req to a project page");
-//     const project = req.params.project;
-//     console.log("requsted project page: ", project);
-//     if (projects.includes(project)) {
-//         res.render("descriptionPage", {
-//             layout: "main",
-//             projects,
-
-//         });
-//     } else {
-//         res.statusCode = 404;
-//         //add 2nd here layout later
-//     }
-// });
-
 app.get("/project/:project", (req, res) => {
     const searchedProject = req.params.project;
     const selectedProject = projects.find(
