@@ -75,9 +75,16 @@ module.exports.getTweets = function (bearerToken, callback) {
     req.end();
 };
 
-// module.exports.filterTweets = function (tweets) {
-//     let filterArr = [];
-//     for (var i = 0; i < tweets.length; i++) {
-//         let obj = {};
-//     }
-// };
+module.exports.filterTweets = function (tweets) {
+    let filteredTweets = [];
+    for (var i = 0; i < tweets.length; i++) {
+        let obj = {};
+        if (tweets[i].entities.urls.length == 1) {
+            obj.text = tweets[i].full_text;
+            obj.href = tweets[i].entities.urls[0].url;
+            filteredTweets.push(obj);
+        }
+    }
+    console.log("filteredTweets: ", filteredTweets);
+    return filteredTweets;
+};
