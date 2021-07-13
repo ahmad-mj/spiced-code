@@ -13,7 +13,7 @@ app.get("/data.json", (req, res) => {
     );
     twiToken().then((token) => {
         Promise.all([
-            twiTweets(token, "theonion"),
+            twiTweets(token, "theonion"), //tweetTimeline (in this case is theonion) is the 2nd parameter in my getTweets function, should pass it also in the path link...
             twiTweets(token, "nytimes"),
             twiTweets(token, "bbcworld"),
         ])
@@ -22,8 +22,8 @@ app.get("/data.json", (req, res) => {
                 // const nyTimes = tweets[1];
                 // const bbcWorld = tweets[2];
                 // const [theOnion, nyTimes, bbcWorld] = tweets;
-                const flat = tweets.flat();
                 // const flatendresults = theOnion.concat(nyTimes, bbcWorld);
+                const flat = tweets.flat();
                 const sorted = flat.sort((a, b) => {
                     const difference =
                         new Date(a.created_at) - new Date(b.created_at);

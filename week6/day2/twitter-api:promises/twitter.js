@@ -45,11 +45,11 @@ module.exports.getToken = function (callback) {
     }
 };
 
-module.exports.getTweets = function (bearerToken, callback) {
+module.exports.getTweets = function (bearerToken, tweetTimeline, callback) {
     const req = https.request(
         {
             host: "api.twitter.com",
-            path: "/1.1/statuses/user_timeline.json?screen_name=theonion&tweet_mode=extended",
+            path: `/1.1/statuses/user_timeline.json?screen_name=${tweetTimeline}&tweet_mode=extended`,
             method: "GET",
             headers: {
                 Authorization: `Bearer ${bearerToken}`,
