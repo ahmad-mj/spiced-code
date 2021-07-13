@@ -1,18 +1,42 @@
 const express = require("express");
 const app = express();
-const { twitterPromises, filterTweets } = require("./twitter");
+const { getToken, getTweets, filterTweets } = require("./twitter");
 const util = require("util");
-const promiseToken = util.promisify(twitterPromises.getToken);
-const promisieTweets = util.promisify(twitterPromises.getTweets);
+const twiToken = util.promisify(getToken);
+const twiTweets = util.promisify(getTweets);
 
 app.use(express.static("./ticker"));
-
 
 app.get("/data.json", (req, res) => {
     console.log(
         "server is now handling this request from ajax - req for json has been made!"
     );
-    twitterPromises().then(("somevalue")=>{})
+    twiToken().then((token) => {
+        Promise.all([
+            twiTweets(token, "theonion"),
+            twiTweets(token, "nytimes"),
+            twiTweets(token, "bbcworld"),
+        ])
+            .then((tweets) => {
+                // const theOnion = tweets[0];
+                // const nyTimes = tweets[1];
+                // const bbcWorld = tweets[2];
+                // const [theOnion, nyTimes, bbcWorld] = tweets;
+                const flat = tweets.flat();
+                // const flatendresults = theOnion.concat(nyTimes, bbcWorld);
+                const sorted = flat.sort((a, b) => {
+                    const difference =
+                        new Date(a.created_at) - new Date(b.created_at);
+                    return difference;
+                });
+                res.json(filterTweets(sorted));
+                console.log("sorted: ", sorted);
+            })
+            .catch((err) => {
+                console.log("unexpected error", err);
+                res.sendStatus(500);
+            });
+    });
 
     // There will be 4 things we want to do in here:
     // 1. get the bearer token
