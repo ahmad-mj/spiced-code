@@ -80,8 +80,9 @@ module.exports.filterTweets = function (tweets) {
     for (var i = 0; i < tweets.length; i++) {
         let obj = {};
         if (tweets[i].entities.urls.length == 1) {
-            obj.text = tweets[i].full_text;
-            obj.href = tweets[i].entities.urls[0].url;
+            obj.name = tweets[i].user.name;
+            obj.text = tweets[i].full_text.slice(0, 50);
+            obj.url = tweets[i].entities.urls[0].url;
             filteredTweets.push(obj);
         }
     }

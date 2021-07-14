@@ -30,7 +30,7 @@ app.get("/data.json", (req, res) => {
                     return difference;
                 });
                 res.json(filterTweets(sorted));
-                console.log("sorted: ", sorted);
+                // console.log("sorted: ", sorted);
             })
             .catch((err) => {
                 console.log("unexpected error", err);
