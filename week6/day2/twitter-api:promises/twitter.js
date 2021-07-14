@@ -1,11 +1,7 @@
 const https = require("https");
 const { consumerKey, consumerSecret } = require("./secrets");
 
-// #1. make a request to get the bearer token
 module.exports.getToken = function (callback) {
-    //this function is responsible for getting the bearerToken from Twitter
-    // we did this together in class <3
-
     let creds = `${consumerKey}:${consumerSecret}`;
     let encodedCreds = new Buffer.from(creds).toString("base64");
 
@@ -19,20 +15,15 @@ module.exports.getToken = function (callback) {
         },
     };
 
-    // options - obj that has info about the request we're about to make
-    // cb - callback specific to our https request that runs WHEN the request is completed
     const req = https.request(options, cb);
     req.end("grant_type=client_credentials");
 
     function cb(resp) {
         if (resp.statusCode != 200) {
-            // something went wrong with our request!!
             callback(resp.statusCode);
             return;
         }
 
-        // if we get to this point, everything went well!!!
-        // we got some data back!
         let body = "";
         resp.on("data", (chunk) => {
             body += chunk;
@@ -81,8 +72,8 @@ module.exports.filterTweets = function (tweets) {
         let obj = {};
         if (tweets[i].entities.urls.length == 1) {
             obj.name = tweets[i].user.name;
-            obj.text = tweets[i].full_text.slice(0, 50);
             obj.url = tweets[i].entities.urls[0].url;
+            obj.text = `${obj.name}: ${tweets[i].full_text.slice(0, 50)}`;
             filteredTweets.push(obj);
         }
     }
